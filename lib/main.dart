@@ -1,3 +1,5 @@
+import 'package:ferme_app/screens/OffresScreen.dart';
+import 'package:ferme_app/screens/updateProduitScreen.dart';
 import 'package:ferme_app/pages/onbords/onbording.dart';
 import 'package:flutter/material.dart';
 
