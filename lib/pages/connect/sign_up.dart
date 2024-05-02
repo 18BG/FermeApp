@@ -13,32 +13,35 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData media = MediaQuery.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Gap(40),
-              Row(
-                children: [
-                  Gap(15),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 0.3),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Icon(
-                        Icons.chevron_left,
-                        size: 30,
+              Padding(
+                padding: EdgeInsets.only(top: media.padding.top),
+                child: Row(
+                  children: [
+                    Gap(15),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 0.3),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Icon(
+                          Icons.chevron_left,
+                          size: 30,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Gap(35),
               const MyText(

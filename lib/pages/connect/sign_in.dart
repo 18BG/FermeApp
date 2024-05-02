@@ -1,3 +1,4 @@
+import 'package:ferme_app/pages/connect/otp_screen.dart';
 import 'package:ferme_app/pages/connect/sign_up.dart';
 import 'package:ferme_app/widgets/MyText.dart';
 import 'package:flutter/material.dart';
@@ -40,26 +41,39 @@ class _SignInState extends State<SignIn> {
                       filled: true,
                       fillColor: Colors.grey[100],
                       hintText: "Phone Number",
-                      border: OutlineInputBorder(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 0.25, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(15)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 0.25, color: Colors.grey),
                           borderRadius: BorderRadius.circular(15))),
                 ),
               ),
               const Gap(20),
-              Container(
-                  margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.green[400],
-                      borderRadius: BorderRadius.circular(15)),
-                  child: const Center(
-                    child: MyText(
-                      text: "Send OTP",
-                      color: Colors.white,
-                      weight: FontWeight.w500,
-                      size: 18,
-                    ),
-                  )),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return OtpScreen();
+                  }));
+                },
+                child: Container(
+                    margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.green[400],
+                        borderRadius: BorderRadius.circular(15)),
+                    child: const Center(
+                      child: MyText(
+                        text: "Send OTP",
+                        color: Colors.white,
+                        weight: FontWeight.w500,
+                        size: 18,
+                      ),
+                    )),
+              ),
               const Gap(60),
               Row(
                 children: [
@@ -119,7 +133,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ],
               ),
-              const Gap(10),
+              const Gap(20),
             ],
           ),
         ),
