@@ -5,6 +5,7 @@ import 'package:ferme_app/pages/mon_compte.dart';
 import 'package:ferme_app/pages/offre_marche.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class BottomNav extends StatefulWidget {
   BottomNav({super.key});
@@ -25,7 +26,30 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     Size siz = MediaQuery.of(context).size;
+    MediaQueryData media = MediaQuery.of(context);
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        //backgroundColor: Colors.black,
+        // toolbarHeight: siz.height * 0.14,
+        title: Container(
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: media.size.width * 0.02, right: media.size.width * 0.02),
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/isen.png",
+                  height: 40,
+                ),
+                const Spacer(),
+                icon_card(Icons.shopping_cart_outlined),
+                icon_card(Icons.notifications_none_outlined),
+              ],
+            ),
+          ),
+        ),
+      ),
       backgroundColor: index == 0 ? Color(0xFFB8F6B3) : Colors.white,
       body: _pages[index],
       bottomNavigationBar: Container(
@@ -38,31 +62,37 @@ class _BottomNavState extends State<BottomNav> {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           child: BottomNavigationBar(
+              type: BottomNavigationBarType.shifting,
+              unselectedFontSize: 18,
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
               onTap: changeIndex,
-              selectedItemColor: Colors.amber,
-              unselectedItemColor: Colors.white,
+              // selectedItemColor: Colors.amber,
+              // unselectedItemColor: Colors.white,
               selectedFontSize: 18,
-              currentIndex: 0,
+              currentIndex: index,
               backgroundColor: Color(0xFF51CA46),
               items: [
                 BottomNavigationBarItem(
                     backgroundColor: Colors.green,
-                    icon: Icon(Icons.home),
+                    icon: Icon(
+                      Icons.home,
+                      // color: index == 0 ? Colors.blue : null,
+                    ),
                     label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Image.asset(
-                        "assets/image/anounce.png",
-                        height: siz.height * 0.028,
-                        //width: 35,
-                      ),
+                    icon: Image.asset(
+                      // color: index == 1 ? Colors.blue : null,
+                      "assets/image/Group 124.png",
+                      height: siz.height * 0.029,
+                      fit: BoxFit.cover,
+
+                      //width: 35,
                     ),
-                    label: "Offre du marché"),
+                    label: "Offre du narché"),
                 BottomNavigationBarItem(
                     icon: Image.asset(
+                      // color: index == 2 ? Colors.blue : null,
                       "assets/image/man.png",
                       height: siz.height * 0.028,
                     ),
@@ -77,6 +107,21 @@ class _BottomNavState extends State<BottomNav> {
                     ),
                     label: "Mon compte")
               ]),
+        ),
+      ),
+    );
+  }
+
+  Card icon_card(IconData? icon) {
+    return Card(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Icon(
+          icon,
+          size: 25,
+          color: Colors.green,
         ),
       ),
     );
