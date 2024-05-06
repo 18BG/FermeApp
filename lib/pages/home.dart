@@ -12,6 +12,7 @@ class Home extends StatelessWidget {
     MediaQueryData media = MediaQuery.of(context);
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(parent: NeverScrollableScrollPhysics()),
         child: SizedBox(
           height: media.size.height,
           child: Column(

@@ -29,6 +29,7 @@ class _BottomNavState extends State<BottomNav> {
     MediaQueryData media = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
+        // toolbarHeight: siz.height * 0.15,
         automaticallyImplyLeading: false,
         //backgroundColor: Colors.black,
         // toolbarHeight: siz.height * 0.14,
@@ -36,15 +37,19 @@ class _BottomNavState extends State<BottomNav> {
           child: Padding(
             padding: EdgeInsets.only(
                 left: media.size.width * 0.02, right: media.size.width * 0.02),
-            child: Row(
+            child: Column(
               children: [
-                Image.asset(
-                  "assets/isen.png",
-                  height: 40,
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/isen.png",
+                      height: 40,
+                    ),
+                    const Spacer(),
+                    icon_card(Icons.shopping_cart_outlined),
+                    icon_card(Icons.notifications_none_outlined),
+                  ],
                 ),
-                const Spacer(),
-                icon_card(Icons.shopping_cart_outlined),
-                icon_card(Icons.notifications_none_outlined),
               ],
             ),
           ),
@@ -59,7 +64,7 @@ class _BottomNavState extends State<BottomNav> {
           color: primaryColor,
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           child: BottomNavigationBar(
               type: BottomNavigationBarType.shifting,
@@ -73,7 +78,7 @@ class _BottomNavState extends State<BottomNav> {
               currentIndex: index,
               backgroundColor: Color(0xFF51CA46),
               items: [
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                     backgroundColor: Colors.green,
                     icon: Icon(
                       Icons.home,
